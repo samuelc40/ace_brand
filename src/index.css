@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cyber-black: #050505;
+  --color-cyber-dark: #0a0a0a;
+  --color-cyber-gray: #121212;
+  --color-cyber-green: #00ff41;
+  --color-cyber-red: #ff003c;
+  --color-cyber-blue: #00f3ff;
+
+  --font-mono: "Courier New", Courier, monospace;
+  --font-sans: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-cyber-black);
+    color: white;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+:root.light-mode {
+  --color-cyber-black: #ffffff;
+  --color-cyber-dark: #f3f4f6;
+  --color-cyber-gray: #e5e7eb;
+  /* Adjusting accents for better contrast on light mode if needed */
+  --color-cyber-green: #00c231;
+  --color-cyber-blue: #00b8c2;
+}
+
+:root.light-mode body {
+  background-color: var(--color-cyber-black);
+  color: #1a1a1a;
+}
+
+/* Light Mode Overrides for Tailwind Utilities */
+:root.light-mode .text-white {
+  color: #1a1a1a !important;
+}
+
+:root.light-mode .text-gray-300 {
+  color: #374151 !important;
+  /* gray-700 */
+}
+
+:root.light-mode .text-gray-400 {
+  color: #4b5563 !important;
+  /* gray-600 */
+}
