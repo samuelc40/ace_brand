@@ -10,7 +10,7 @@ import path from 'path';
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = Number(process.env.PORT) || 5000;
 
 const httpServer = createServer(app);
 const ADMIN_HASH = 'f96dfc73494c2ebc0266c98beaeade469af6132313c99fafa27104059a1e3b79'; // SHA-256 of "m9803fds"
@@ -340,9 +340,6 @@ io.on('connection', (socket) => {
     });
 });
 
-// httpServer.listen(port, () => {
-//     console.log(`Server is running on port ${port}`);
-// });
 httpServer.listen(port, "0.0.0.0", () => {
-    console.log(`Server is running on port ${port}`);
+  console.log(`Server running on port ${port}`);
 });
