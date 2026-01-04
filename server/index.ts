@@ -28,19 +28,18 @@ const io = new Server(httpServer, {
 app.use(cors());
 app.use(express.json());
 
-// ESM-compatible __dirname
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Serve Vite frontend
 const distPath = path.join(__dirname, "..", "..", "dist");
 
 app.use(express.static(distPath));
 
-// SPA fallback
-app.get("*", (req, res) => {
+// React Router / SPA fallback (Express 5 compatible)
+app.get(/^\/(?!api).*/, (req, res) => {
   res.sendFile(path.join(distPath, "index.html"));
 });
+
 
 // Email transporter configuration
 const transporter = nodemailer.createTransport({
